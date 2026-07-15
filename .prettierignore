@@ -1,0 +1,8 @@
+.output
+.wxt
+node_modules
+stats.html
+stats-*.json
+pnpm-lock.yaml
+public/icon
+LICENSE
