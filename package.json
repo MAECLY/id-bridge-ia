@@ -1,0 +1,35 @@
+{
+  "name": "id-bridge-ia",
+  "version": "0.1.0",
+  "description": "Surface a tab's identity (tabId, windowId, groupId, a synthetic sessionId and the Chrome-profile user) so a browser-controlling agent knows where it's operating.",
+  "type": "module",
+  "private": true,
+  "license": "SEE LICENSE IN LICENSE",
+  "author": "Miguel (Maecly) <migueltuxd@gmail.com> (https://www.maecly.com)",
+  "scripts": {
+    "dev": "wxt",
+    "build": "wxt build",
+    "zip": "wxt zip",
+    "compile": "wxt prepare && tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "icons": "node scripts/generate-icons.mjs",
+    "postinstall": "wxt prepare"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.7.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.7.0",
+    "prettier": "^3.9.5",
+    "sharp": "^0.35.3",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.64.0",
+    "vitest": "^4.1.10",
+    "wxt": "^0.20.27"
+  }
+}

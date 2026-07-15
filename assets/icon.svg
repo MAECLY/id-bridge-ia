@@ -1,0 +1,13 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ID Bridge IA">
+  <rect width="128" height="128" rx="28" fill="#4F46E5" />
+  <!-- suspension arc -->
+  <path d="M34 50 C 52 28, 76 28, 94 50" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" />
+  <!-- bridge deck -->
+  <rect x="28" y="60" width="72" height="10" rx="5" fill="#FFFFFF" />
+  <!-- left node -->
+  <circle cx="34" cy="65" r="14" fill="#FFFFFF" />
+  <circle cx="34" cy="65" r="6" fill="#4F46E5" />
+  <!-- right node -->
+  <circle cx="94" cy="65" r="14" fill="#FFFFFF" />
+  <circle cx="94" cy="65" r="6" fill="#4F46E5" />
+</svg>
