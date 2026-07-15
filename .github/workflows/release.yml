@@ -1,14 +1,22 @@
 name: Release
 
-# Tag a release to build and publish the packaged extension:
-#   1. bump "version" in package.json
-#   2. git tag vX.Y.Z && git push --tags
-# The tag build produces .output/id-bridge-ia-<version>-chrome.zip and attaches
-# it to a GitHub Release. Can also be run manually from the Actions tab.
+# Two ways to cut a release of the packaged extension:
+#   A) Push a tag:   bump "version" in package.json, then
+#                    git tag vX.Y.Z && git push origin vX.Y.Z
+#   B) Manual:       Actions tab -> Release -> "Run workflow". The tag is
+#                    created automatically from package.json's version
+#                    (or from the optional "tag" input).
+# Either way the build produces .output/id-bridge-ia-<version>-chrome.zip and
+# attaches it to a GitHub Release.
 on:
   push:
     tags: ['v*']
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (e.g. v0.1.0). Leave blank to use v<package.json version>.'
+        required: false
+        default: ''
 
 permissions:
   contents: write
@@ -38,9 +46,23 @@ jobs:
       - name: Package extension (zip)
         run: pnpm zip
 
+      - name: Resolve release tag
+        id: tag
+        run: |
+          if [ "${{ github.ref_type }}" = "tag" ]; then
+            tag="${{ github.ref_name }}"
+          elif [ -n "${{ github.event.inputs.tag }}" ]; then
+            tag="${{ github.event.inputs.tag }}"
+          else
+            tag="v$(node -p "require('./package.json').version")"
+          fi
+          echo "name=$tag" >> "$GITHUB_OUTPUT"
+          echo "Release tag: $tag"
+
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ steps.tag.outputs.name }}
           files: .output/*.zip
           generate_release_notes: true
           fail_on_unmatched_files: true
