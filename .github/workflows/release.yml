@@ -1,0 +1,46 @@
+name: Release
+
+# Tag a release to build and publish the packaged extension:
+#   1. bump "version" in package.json
+#   2. git tag vX.Y.Z && git push --tags
+# The tag build produces .output/id-bridge-ia-<version>-chrome.zip and attaches
+# it to a GitHub Release. Can also be run manually from the Actions tab.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Typecheck
+        run: pnpm compile
+
+      - name: Unit tests
+        run: pnpm test:run
+
+      - name: Package extension (zip)
+        run: pnpm zip
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: .output/*.zip
+          generate_release_notes: true
+          fail_on_unmatched_files: true
