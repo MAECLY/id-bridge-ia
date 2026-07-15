@@ -35,6 +35,12 @@ describe('getOrCreateSessionId', () => {
     const b = await getOrCreateSessionId(2);
     expect(a).not.toBe(b);
   });
+
+  it('returns the same id for concurrent first-time calls (no race)', async () => {
+    const [a, b] = await Promise.all([getOrCreateSessionId(9), getOrCreateSessionId(9)]);
+    expect(a).toBe(b);
+    expect(await browser.storage.session.get('sid_9')).toEqual({ sid_9: a });
+  });
 });
 
 describe('getChromeUser', () => {

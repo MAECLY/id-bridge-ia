@@ -34,6 +34,25 @@ export interface TabIds {
   user: ChromeUser;
 }
 
+// Dedupes concurrent first-time creations within a service-worker lifetime.
+// `getOrCreateSessionId` is a check-then-set across two await points; the two
+// consumption paths (evaluate_script and the GET_IDS message) can interleave
+// there, so without this map two concurrent first calls for the same tab could
+// each read empty storage and generate different UUIDs, breaking the "stable
+// per tab" guarantee. The service worker is single-threaded, so sharing one
+// in-flight promise per tabId is enough.
+const inflightSessionIds = new Map<number, Promise<string>>();
+
+async function createSessionId(tabId: number): Promise<string> {
+  const key = `sid_${tabId}`;
+  const stored = await browser.storage.session.get(key);
+  if (stored[key]) return stored[key] as string;
+
+  const id = crypto.randomUUID();
+  await browser.storage.session.set({ [key]: id });
+  return id;
+}
+
 /**
  * Returns a stable, synthetic session id for a tab, generating and persisting a
  * UUID the first time it is requested.
@@ -43,15 +62,23 @@ export interface TabIds {
  * "session". There is no native session id for OPEN tabs: `tabs.Tab.sessionId`
  * is only populated for CLOSED tabs via `chrome.sessions`, so this value is
  * synthetic and deliberate.
+ *
+ * Concurrent first-time calls for the same tab share a single in-flight promise
+ * so they return the same id and only one UUID is generated (see
+ * `inflightSessionIds`).
  */
-export async function getOrCreateSessionId(tabId: number): Promise<string> {
-  const key = `sid_${tabId}`;
-  const stored = await browser.storage.session.get(key);
-  if (stored[key]) return stored[key] as string;
+export function getOrCreateSessionId(tabId: number): Promise<string> {
+  const existing = inflightSessionIds.get(tabId);
+  if (existing) return existing;
 
-  const id = crypto.randomUUID();
-  await browser.storage.session.set({ [key]: id });
-  return id;
+  const pending = createSessionId(tabId);
+  inflightSessionIds.set(tabId, pending);
+  // Drop the entry once settled so later calls re-read storage and the map
+  // never grows unbounded.
+  void pending.finally(() => {
+    if (inflightSessionIds.get(tabId) === pending) inflightSessionIds.delete(tabId);
+  });
+  return pending;
 }
 
 /**
