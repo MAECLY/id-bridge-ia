@@ -5,7 +5,7 @@
   "type": "module",
   "private": true,
   "license": "SEE LICENSE IN LICENSE",
-  "author": "Miguel Angel Esparza Calero — Maecly <migueltuxd@gmail.com> (https://www.maecly.com)",
+  "author": "Miguel Angel Esparza Calero — Maecly <contact@maecly.com> (https://www.maecly.com)",
   "packageManager": "pnpm@10.33.0",
   "scripts": {
     "dev": "wxt",
