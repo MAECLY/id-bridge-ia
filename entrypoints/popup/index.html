@@ -12,9 +12,121 @@
         <h1>ID Bridge IA</h1>
         <p>Active tab identifiers</p>
       </div>
+      <div class="hdr-actions">
+        <button
+          id="settings-open"
+          class="hdr-btn"
+          type="button"
+          title="Settings"
+          aria-label="Settings"
+        >
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"
+            />
+            <circle cx="12" cy="12" r="3" />
+          </svg>
+        </button>
+        <button id="about-open" class="hdr-btn" type="button" title="About" aria-label="About">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+        </button>
+      </div>
     </header>
     <main id="ids" class="ids" hidden></main>
+    <button id="copy-json" class="copy-all" type="button" hidden>Copy JSON</button>
     <p id="status" class="status">Reading…</p>
+
+    <div id="settings" class="overlay" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+        <button id="settings-close" class="modal-close" type="button" aria-label="Close">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+        <h2 id="settings-title">Customize fields</h2>
+        <p class="modal-hint">Show, hide and reorder the fields.</p>
+        <ul id="field-list" class="field-list"></ul>
+        <button id="settings-reset" class="reset-btn" type="button">Reset to defaults</button>
+      </div>
+    </div>
+
+    <div id="about" class="overlay" hidden>
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="about-title">
+        <button id="about-close" class="modal-close" type="button" aria-label="Close">
+          <svg
+            width="13"
+            height="13"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+        <img src="/icon/48.png" alt="" class="about-logo" width="40" height="40" />
+        <h2 id="about-title">ID Bridge IA</h2>
+        <p id="about-version" class="about-version"></p>
+        <p class="about-by">
+          Created by
+          <a href="https://www.maecly.com/" target="_blank" rel="noopener noreferrer">MAECLY</a>
+        </p>
+        <a
+          class="kofi-btn"
+          href="https://ko-fi.com/O4O31XM0X"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M17 8h1a4 4 0 1 1 0 8h-1" />
+            <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z" />
+          </svg>
+          Support me on Ko-fi
+        </a>
+      </div>
+    </div>
     <script type="module" src="./main.ts"></script>
   </body>
 </html>

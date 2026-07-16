@@ -6,14 +6,14 @@
 
 ---
 
-**ID Bridge IA** is a small, internal Manifest V3 Chrome extension that exposes the
+**ID Bridge IA** is a small Manifest V3 Chrome extension that exposes the
 identifiers of a browser tab — `tabId`, `windowId`, `groupId`, a synthetic
 `sessionId`, and the Chrome-profile user — so an AI agent driving the browser
 (via [chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp))
 can read the context it is operating in.
 
-It is a development tool, not something meant for the Chrome Web Store. Built with
-[WXT](https://wxt.dev) + TypeScript.
+Built with [WXT](https://wxt.dev) + TypeScript. Official releases are
+distributed through the Chrome Web Store.
 
 ## What it returns
 
@@ -122,9 +122,9 @@ browser does not implement it.
 
 ## License
 
-Source-available under the
-[PolyForm Internal Use License 1.0.0](./LICENSE). You may use and modify it for
-your own internal or personal purposes; redistribution is reserved.
+Proprietary software — see [LICENSE](./LICENSE). The only granted use is
+installing the official builds distributed by the author (e.g. via the Chrome
+Web Store); the visible source is published for reference only.
 
-© 2026 Miguel — [Maecly](https://www.maecly.com). All distribution and other
-rights reserved by the licensor.
+© 2026 Miguel Angel Esparza Calero — [Maecly](https://www.maecly.com). All
+rights reserved.

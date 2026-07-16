@@ -5,9 +5,10 @@ export default defineConfig({
   manifest: {
     name: 'ID Bridge IA',
     description:
-      'Exposes tabId, windowId, groupId, a synthetic sessionId and the Chrome-profile user so a browser-controlling agent can read its context via evaluate_script.',
+      'Exposes tabId, windowId, groupId, a synthetic sessionId and the Chrome-profile user so browser-controlling agents know the context.',
     // getProfileUserInfo needs BOTH `identity` and `identity.email`; `tabs`
-    // populates url/title; `storage` backs the synthetic sessionId.
-    permissions: ['tabs', 'tabGroups', 'storage', 'identity', 'identity.email'],
+    // populates url/title; `storage` backs the synthetic sessionId. `tab.groupId`
+    // comes from the tabs API, so no `tabGroups` permission is needed.
+    permissions: ['tabs', 'storage', 'identity', 'identity.email'],
   },
 });
