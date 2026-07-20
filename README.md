@@ -2,6 +2,11 @@
   <img src="public/icon/128.png" width="96" height="96" alt="ID Bridge IA logo" />
   <h1>ID Bridge IA</h1>
   <p><em>Surface a tab's identity so browser agents know where they're operating.</em></p>
+  <p>
+    <a href="https://chromewebstore.google.com/detail/id-bridge-ia/knfgphmhijlbgdjhcciofodedgdifpij">
+      <img src="https://img.shields.io/chrome-web-store/v/knfgphmhijlbgdjhcciofodedgdifpij?label=Chrome%20Web%20Store&logo=googlechrome&logoColor=white&color=4285F4" alt="Available in the Chrome Web Store" />
+    </a>
+  </p>
 </div>
 
 ---
@@ -13,7 +18,8 @@ identifiers of a browser tab — `tabId`, `windowId`, `groupId`, a synthetic
 can read the context it is operating in.
 
 Built with [WXT](https://wxt.dev) + TypeScript. Official releases are
-distributed through the Chrome Web Store.
+distributed through the
+[Chrome Web Store](https://chromewebstore.google.com/detail/id-bridge-ia/knfgphmhijlbgdjhcciofodedgdifpij).
 
 ## What it returns
 
@@ -30,7 +36,13 @@ distributed through the Chrome Web Store.
 | `incognito` | `boolean`           |                                                                |
 | `user`      | `{ email, gaiaId }` | The Chrome **profile** account — one per browser (see caveats) |
 
-## Install (developer mode)
+## Install
+
+Install the published extension from the
+**[Chrome Web Store](https://chromewebstore.google.com/detail/id-bridge-ia/knfgphmhijlbgdjhcciofodedgdifpij)**.
+This is the recommended way to use ID Bridge IA.
+
+### From source (developer mode)
 
 ```bash
 pnpm install
