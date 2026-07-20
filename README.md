@@ -6,6 +6,9 @@
     <a href="https://chromewebstore.google.com/detail/id-bridge-ia/knfgphmhijlbgdjhcciofodedgdifpij">
       <img src="https://img.shields.io/chrome-web-store/v/knfgphmhijlbgdjhcciofodedgdifpij?label=Chrome%20Web%20Store&logo=googlechrome&logoColor=white&color=4285F4" alt="Available in the Chrome Web Store" />
     </a>
+    <a href="https://id-bridge-ia.maecly.com/">
+      <img src="https://img.shields.io/badge/Website-id--bridge--ia.maecly.com-6366F1" alt="ID Bridge IA website" />
+    </a>
   </p>
 </div>
 
