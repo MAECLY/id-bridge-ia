@@ -9,6 +9,18 @@
     <a href="https://id-bridge-ia.maecly.com/">
       <img src="https://img.shields.io/badge/Website-id--bridge--ia.maecly.com-6366F1" alt="ID Bridge IA website" />
     </a>
+    <a href="https://chromewebstore.google.com/detail/id-bridge-ia/knfgphmhijlbgdjhcciofodedgdifpij">
+      <img src="https://img.shields.io/chrome-web-store/users/knfgphmhijlbgdjhcciofodedgdifpij?label=users&color=4285F4" alt="Chrome Web Store users" />
+    </a>
+    <a href="https://github.com/MAECLY/id-bridge-ia/stargazers">
+      <img src="https://img.shields.io/github/stars/MAECLY/id-bridge-ia?color=6366F1" alt="GitHub stars" />
+    </a>
+    <a href="https://hits.sh/github.com/MAECLY/id-bridge-ia/">
+      <img src="https://hits.sh/github.com/MAECLY/id-bridge-ia.svg?label=views&color=6366F1" alt="Repository views" />
+    </a>
+    <a href="https://github.com/MAECLY/id-bridge-ia/commits/main">
+      <img src="https://img.shields.io/github/last-commit/MAECLY/id-bridge-ia?color=6366F1" alt="Last commit" />
+    </a>
   </p>
 </div>
 
